@@ -1,0 +1,37 @@
+<%- | Optional[String] $router_id     = undef,
+      Optional[String] $rdomain       = undef,
+      Hash             $macros        = {},
+      Hash             $global_config = {},
+      Array            $redistribute  = [],
+| -%>
+
+# macros
+<% $macros.each | String $key, $value | { -%>
+  <%= $key %> = <%= $value %>
+<% } -%>
+
+# global configs
+<% if $router_id { -%>
+router-id <%= $router_id %>
+<% } -%>
+<% if $rdomain { -%>
+rdomain <%= $rdomain %>
+<% } -%>
+<% $global_config.each | String $key, String $value | { -%>
+  <%- %><%= $key %> <%= $value %>
+<% } -%>
+<% $redistribute.each | Hash $val | { -%>
+  <%- if $val['negativ'] { -%>no <% } -%>redistribute<% -%>
+  <%- %> <%= $val['value'] -%>
+  <%- if $val['set'] { -%>
+    <%- %> set {<% -%>
+    <%- $val['set'].each | String $k, String $v | { -%>
+      <%- %> <%= $k %> <%= $v -%>
+    <%- } %> }<% -%>
+  <%- } -%>
+  <%- if $val['depend'] { -%>
+    <%- %> depend on <%= $val['depend'] -%>
+  <%- } %>
+<%- } -%>
+
+# areas

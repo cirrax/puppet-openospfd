@@ -1,0 +1,13 @@
+<%- | String $area_name,
+      String $interface_name,
+      Hash   $config         = {},
+      Boolean $passive       = false,
+| -%>
+   interface <%= $interface_name %> {
+   <%- if $passive { -%>
+      passive
+   <%- } -%>
+   <%- $config.each | String $key, $value | { -%>
+      <%= $key %> <%= $value %>
+   <%- } -%>
+   }

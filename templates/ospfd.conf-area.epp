@@ -1,0 +1,8 @@
+<%- | String            $area_name,
+      Hash              $config  = {},
+| -%>
+
+area <%= $area_name %> {
+<% $config.each | String $key, $value | { -%>
+   <%= $key %> <%= $value %>
+<% } -%>
