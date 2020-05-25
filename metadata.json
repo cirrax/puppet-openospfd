@@ -1,10 +1,22 @@
 {
   "name": "cirrax-openospfd",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "author": "Cirrax GmbH",
-  "summary": "",
+  "summary": "configure openospfd",
   "license": "GPL-3.0",
-  "source": "",
+  "source": "https://github.com/cirrax/puppet-openospfd",
+  "project_page": "https://github.com/cirrax/puppet-openospfd",
+  "issues_url": "https://github.com/cirrax/puppet-openospfd/issues",
+  "data_provider": "hiera",
+  "description": "Configure openospfd and openospf6d",
+  "tags": [
+    "'ospf",
+    "openospfd",
+    "ospfd",
+    "ospf6f",
+    "openospf6d",
+    "routing"
+  ],
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
