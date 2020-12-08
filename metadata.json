@@ -7,16 +7,6 @@
   "source": "https://github.com/cirrax/puppet-openospfd",
   "project_page": "https://github.com/cirrax/puppet-openospfd",
   "issues_url": "https://github.com/cirrax/puppet-openospfd/issues",
-  "data_provider": "hiera",
-  "description": "Configure openospfd and openospf6d",
-  "tags": [
-    "'ospf",
-    "openospfd",
-    "ospfd",
-    "ospf6f",
-    "openospf6d",
-    "routing"
-  ],
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
@@ -27,6 +17,7 @@
       "version_requirement": ">= 2.0.0 < 6.0.0"
     }
   ],
+  "data_provider": "hiera",
   "operatingsystem_support": [
     {
       "operatingsystem": "OpenBSD",
@@ -42,7 +33,16 @@
       "version_requirement": ">= 4.10.0 < 7.0.0"
     }
   ],
-  "pdk-version": "1.18.0",
-  "template-url": "pdk-default#1.18.0",
-  "template-ref": "tags/1.18.0-0-g095317c"
+  "description": "Configure openospfd and openospf6d",
+  "tags": [
+    "'ospf",
+    "openospfd",
+    "ospfd",
+    "ospf6f",
+    "openospf6d",
+    "routing"
+  ],
+  "pdk-version": "1.18.1",
+  "template-url": "pdk-default#1.18.1",
+  "template-ref": "tags/1.18.1-0-g3d2e75c"
 }
