@@ -28,6 +28,9 @@
 #   Hash of global configurations
 # @param rcconffile
 #   the rc.conf file to write startup parameters into
+# @param interfaces
+#   default interfaces to add to the area (using openospfd::interface)
+#   for detailed interface options see openospfd::interface
 #   
 # @example
 #   include openospfd
@@ -43,6 +46,7 @@ class openospfd (
   Hash             $macros         = {},
   Hash             $global_config  = {},
   String           $rcconffile     = '/etc/rc.conf.local',
+  Hash             $interfaces     = {},
 ) {
 
   if $include_ospfd {
