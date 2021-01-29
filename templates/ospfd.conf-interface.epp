@@ -1,6 +1,6 @@
-<%- | String $area_name,
-      String $interface_name,
-      Hash   $config         = {},
+<%- | String  $area_name,
+      String  $interface_name,
+      Hash    $config         = {},
       Boolean $passive       = false,
 | -%>
    interface <%= $interface_name %> {

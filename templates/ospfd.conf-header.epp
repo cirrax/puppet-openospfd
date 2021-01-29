@@ -1,8 +1,8 @@
-<%- | Optional[String] $router_id     = undef,
-      Optional[String] $rdomain       = undef,
-      Hash             $macros        = {},
-      Hash             $global_config = {},
-      Array            $redistribute  = [],
+<%- | String $router_id,
+      String $rdomain,
+      Hash   $macros        = {},
+      Hash   $global_config = {},
+      Array  $redistribute  = [],
 | -%>
 
 # macros
@@ -11,10 +11,10 @@
 <% } -%>
 
 # global configs
-<% if $router_id { -%>
+<% unless $router_id == '' { -%>
 router-id <%= $router_id %>
 <% } -%>
-<% if $rdomain { -%>
+<% unless $rdomain == '' { -%>
 rdomain <%= $rdomain %>
 <% } -%>
 <% $global_config.each | String $key, String $value | { -%>

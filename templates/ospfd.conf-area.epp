@@ -1,5 +1,5 @@
-<%- | String            $area_name,
-      Hash              $config  = {},
+<%- | String $area_name,
+      Hash   $config  = {},
 | -%>
 
 area <%= $area_name %> {
