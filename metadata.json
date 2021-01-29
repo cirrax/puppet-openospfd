@@ -1,6 +1,6 @@
 {
   "name": "cirrax-openospfd",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "author": "Cirrax GmbH",
   "summary": "configure openospfd",
   "license": "GPL-3.0",
