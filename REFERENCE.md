@@ -7,17 +7,17 @@
 ### Classes
 
 * [`openospfd`](#openospfd): main class to configure openospfd
-* [`openospfd::ospf6d`](#openospfdospf6d): main class to configure ospf6d
-* [`openospfd::ospfd`](#openospfdospfd): main class to configure ospfd
+* [`openospfd::ospf6d`](#openospfd--ospf6d): main class to configure ospf6d
+* [`openospfd::ospfd`](#openospfd--ospfd): main class to configure ospfd
 
 ### Defined types
 
-* [`openospfd::area`](#openospfdarea): add an area to the config
-* [`openospfd::interface`](#openospfdinterface): add an interface to an area
+* [`openospfd::area`](#openospfd--area): add an area to the config
+* [`openospfd::interface`](#openospfd--interface): add an interface to an area
 
 ## Classes
 
-### `openospfd`
+### <a name="openospfd"></a>`openospfd`
 
 This is the main class to configure openospfd.
 Parameters set here are used as defaults for
@@ -34,25 +34,38 @@ include openospfd
 
 #### Parameters
 
-The following parameters are available in the `openospfd` class.
+The following parameters are available in the `openospfd` class:
 
-##### `include_ospfd`
+* [`include_ospfd`](#-openospfd--include_ospfd)
+* [`include_ospf6d`](#-openospfd--include_ospf6d)
+* [`owner`](#-openospfd--owner)
+* [`group`](#-openospfd--group)
+* [`areas`](#-openospfd--areas)
+* [`router_id`](#-openospfd--router_id)
+* [`rdomain`](#-openospfd--rdomain)
+* [`rtable`](#-openospfd--rtable)
+* [`macros`](#-openospfd--macros)
+* [`global_config`](#-openospfd--global_config)
+* [`rcconffile`](#-openospfd--rcconffile)
+* [`interfaces`](#-openospfd--interfaces)
+
+##### <a name="-openospfd--include_ospfd"></a>`include_ospfd`
 
 Data type: `Boolean`
 
 whether to include/configure ospfd
 
-Default value: ``true``
+Default value: `true`
 
-##### `include_ospf6d`
+##### <a name="-openospfd--include_ospf6d"></a>`include_ospf6d`
 
 Data type: `Boolean`
 
 whether to include/configure ospf6d
 
-Default value: ``true``
+Default value: `true`
 
-##### `owner`
+##### <a name="-openospfd--owner"></a>`owner`
 
 Data type: `String`
 
@@ -60,7 +73,7 @@ owner of the configuration files
 
 Default value: `'root'`
 
-##### `group`
+##### <a name="-openospfd--group"></a>`group`
 
 Data type: `String`
 
@@ -68,7 +81,7 @@ group of the configuration files
 
 Default value: `'wheel'`
 
-##### `areas`
+##### <a name="-openospfd--areas"></a>`areas`
 
 Data type: `Hash`
 
@@ -77,31 +90,31 @@ this Hash is used to run openospfd::area resource
 
 Default value: `{}`
 
-##### `router_id`
+##### <a name="-openospfd--router_id"></a>`router_id`
 
 Data type: `Optional[String]`
 
 the router-id
 
-Default value: ``undef``
+Default value: `undef`
 
-##### `rdomain`
+##### <a name="-openospfd--rdomain"></a>`rdomain`
 
 Data type: `Optional[String]`
 
 the rdomain to set
 
-Default value: ``undef``
+Default value: `undef`
 
-##### `rtable`
+##### <a name="-openospfd--rtable"></a>`rtable`
 
 Data type: `Optional[String]`
 
 the rdomain to start in (set ospfd_rtable in rc.conf.local)
 
-Default value: ``undef``
+Default value: `undef`
 
-##### `macros`
+##### <a name="-openospfd--macros"></a>`macros`
 
 Data type: `Hash`
 
@@ -109,7 +122,7 @@ Hash of macros to define
 
 Default value: `{}`
 
-##### `global_config`
+##### <a name="-openospfd--global_config"></a>`global_config`
 
 Data type: `Hash`
 
@@ -117,7 +130,7 @@ Hash of global configurations
 
 Default value: `{}`
 
-##### `rcconffile`
+##### <a name="-openospfd--rcconffile"></a>`rcconffile`
 
 Data type: `String`
 
@@ -125,7 +138,7 @@ the rc.conf file to write startup parameters into
 
 Default value: `'/etc/rc.conf.local'`
 
-##### `interfaces`
+##### <a name="-openospfd--interfaces"></a>`interfaces`
 
 Data type: `Hash`
 
@@ -134,16 +147,29 @@ for detailed interface options see openospfd::interface
 
 Default value: `{}`
 
-### `openospfd::ospf6d`
+### <a name="openospfd--ospf6d"></a>`openospfd::ospf6d`
 
 This class configures ospfd.
 It takes default values from ::openospfd class
 
 #### Parameters
 
-The following parameters are available in the `openospfd::ospf6d` class.
+The following parameters are available in the `openospfd::ospf6d` class:
 
-##### `config_file`
+* [`config_file`](#-openospfd--ospf6d--config_file)
+* [`service_name`](#-openospfd--ospf6d--service_name)
+* [`service_ensure`](#-openospfd--ospf6d--service_ensure)
+* [`service_enable`](#-openospfd--ospf6d--service_enable)
+* [`validate_cmd`](#-openospfd--ospf6d--validate_cmd)
+* [`areas`](#-openospfd--ospf6d--areas)
+* [`router_id`](#-openospfd--ospf6d--router_id)
+* [`rdomain`](#-openospfd--ospf6d--rdomain)
+* [`rtable`](#-openospfd--ospf6d--rtable)
+* [`macros`](#-openospfd--ospf6d--macros)
+* [`global_config`](#-openospfd--ospf6d--global_config)
+* [`redistribute`](#-openospfd--ospf6d--redistribute)
+
+##### <a name="-openospfd--ospf6d--config_file"></a>`config_file`
 
 Data type: `String`
 
@@ -151,7 +177,7 @@ Data type: `String`
 
 Default value: `'/etc/ospf6d.conf'`
 
-##### `service_name`
+##### <a name="-openospfd--ospf6d--service_name"></a>`service_name`
 
 Data type: `String`
 
@@ -159,7 +185,7 @@ the name of the ospfd service
 
 Default value: `'ospf6d'`
 
-##### `service_ensure`
+##### <a name="-openospfd--ospf6d--service_ensure"></a>`service_ensure`
 
 Data type: `String`
 
@@ -167,7 +193,7 @@ what we ensure for the service
 
 Default value: `'running'`
 
-##### `service_enable`
+##### <a name="-openospfd--ospf6d--service_enable"></a>`service_enable`
 
 Data type: `String`
 
@@ -175,7 +201,7 @@ should the service be enabled
 
 Default value: `'true'`
 
-##### `validate_cmd`
+##### <a name="-openospfd--ospf6d--validate_cmd"></a>`validate_cmd`
 
 Data type: `String`
 
@@ -183,56 +209,56 @@ command to validate the configuration file
 
 Default value: `'/usr/sbin/ospf6d -nf %'`
 
-##### `areas`
+##### <a name="-openospfd--ospf6d--areas"></a>`areas`
 
 Data type: `Optional[Hash]`
 
 Hash of areas to set up with openospfd::area
 resource.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### `router_id`
+##### <a name="-openospfd--ospf6d--router_id"></a>`router_id`
 
 Data type: `Optional[String]`
 
 the router-id
 
-Default value: ``undef``
+Default value: `undef`
 
-##### `rdomain`
+##### <a name="-openospfd--ospf6d--rdomain"></a>`rdomain`
 
 Data type: `Optional[String]`
 
 the rdomain to set
 
-Default value: ``undef``
+Default value: `undef`
 
-##### `rtable`
+##### <a name="-openospfd--ospf6d--rtable"></a>`rtable`
 
 Data type: `Optional[String]`
 
 the rdomain to start in (set ospfd_rtable in rc.conf.local)
 
-Default value: ``undef``
+Default value: `undef`
 
-##### `macros`
+##### <a name="-openospfd--ospf6d--macros"></a>`macros`
 
 Data type: `Optional[Hash]`
 
 Hash of macros to define
 
-Default value: ``undef``
+Default value: `undef`
 
-##### `global_config`
+##### <a name="-openospfd--ospf6d--global_config"></a>`global_config`
 
 Data type: `Optional[Hash]`
 
 Hash of global configurations
 
-Default value: ``undef``
+Default value: `undef`
 
-##### `redistribute`
+##### <a name="-openospfd--ospf6d--redistribute"></a>`redistribute`
 
 Data type: `Optional[Array]`
 
@@ -252,16 +278,29 @@ exampel in yaml notation:
 
 Default value: `[]`
 
-### `openospfd::ospfd`
+### <a name="openospfd--ospfd"></a>`openospfd::ospfd`
 
 This class configures ospfd.
 It takes default values from ::openospfd class
 
 #### Parameters
 
-The following parameters are available in the `openospfd::ospfd` class.
+The following parameters are available in the `openospfd::ospfd` class:
 
-##### `config_file`
+* [`config_file`](#-openospfd--ospfd--config_file)
+* [`service_name`](#-openospfd--ospfd--service_name)
+* [`service_ensure`](#-openospfd--ospfd--service_ensure)
+* [`service_enable`](#-openospfd--ospfd--service_enable)
+* [`validate_cmd`](#-openospfd--ospfd--validate_cmd)
+* [`areas`](#-openospfd--ospfd--areas)
+* [`router_id`](#-openospfd--ospfd--router_id)
+* [`rdomain`](#-openospfd--ospfd--rdomain)
+* [`rtable`](#-openospfd--ospfd--rtable)
+* [`macros`](#-openospfd--ospfd--macros)
+* [`global_config`](#-openospfd--ospfd--global_config)
+* [`redistribute`](#-openospfd--ospfd--redistribute)
+
+##### <a name="-openospfd--ospfd--config_file"></a>`config_file`
 
 Data type: `String`
 
@@ -269,7 +308,7 @@ Data type: `String`
 
 Default value: `'/etc/ospfd.conf'`
 
-##### `service_name`
+##### <a name="-openospfd--ospfd--service_name"></a>`service_name`
 
 Data type: `String`
 
@@ -277,7 +316,7 @@ the name of the ospfd service
 
 Default value: `'ospfd'`
 
-##### `service_ensure`
+##### <a name="-openospfd--ospfd--service_ensure"></a>`service_ensure`
 
 Data type: `String`
 
@@ -285,7 +324,7 @@ what we ensure for the service
 
 Default value: `'running'`
 
-##### `service_enable`
+##### <a name="-openospfd--ospfd--service_enable"></a>`service_enable`
 
 Data type: `String`
 
@@ -293,7 +332,7 @@ should the service be enabled
 
 Default value: `'true'`
 
-##### `validate_cmd`
+##### <a name="-openospfd--ospfd--validate_cmd"></a>`validate_cmd`
 
 Data type: `String`
 
@@ -301,56 +340,56 @@ command to validate the configuration file
 
 Default value: `'/usr/sbin/ospfd -nf %'`
 
-##### `areas`
+##### <a name="-openospfd--ospfd--areas"></a>`areas`
 
 Data type: `Optional[Hash]`
 
 Hash of areas to set up with openospfd::area
 resource.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### `router_id`
+##### <a name="-openospfd--ospfd--router_id"></a>`router_id`
 
 Data type: `Optional[String]`
 
 the router-id
 
-Default value: ``undef``
+Default value: `undef`
 
-##### `rdomain`
+##### <a name="-openospfd--ospfd--rdomain"></a>`rdomain`
 
 Data type: `Optional[String]`
 
 the rdomain to set
 
-Default value: ``undef``
+Default value: `undef`
 
-##### `rtable`
+##### <a name="-openospfd--ospfd--rtable"></a>`rtable`
 
 Data type: `Optional[String]`
 
 the rdomain to start in (set ospfd_rtable in rc.conf.local)
 
-Default value: ``undef``
+Default value: `undef`
 
-##### `macros`
+##### <a name="-openospfd--ospfd--macros"></a>`macros`
 
 Data type: `Optional[Hash]`
 
 Hash of macros to define
 
-Default value: ``undef``
+Default value: `undef`
 
-##### `global_config`
+##### <a name="-openospfd--ospfd--global_config"></a>`global_config`
 
 Data type: `Optional[Hash]`
 
 Hash of global configurations
 
-Default value: ``undef``
+Default value: `undef`
 
-##### `redistribute`
+##### <a name="-openospfd--ospfd--redistribute"></a>`redistribute`
 
 Data type: `Optional[Array]`
 
@@ -374,21 +413,26 @@ Default value: `[]`
 
 ## Defined types
 
-### `openospfd::area`
+### <a name="openospfd--area"></a>`openospfd::area`
 
 add an area to the config
 
 #### Parameters
 
-The following parameters are available in the `openospfd::area` defined type.
+The following parameters are available in the `openospfd::area` defined type:
 
-##### `target`
+* [`target`](#-openospfd--area--target)
+* [`area_name`](#-openospfd--area--area_name)
+* [`config`](#-openospfd--area--config)
+* [`interfaces`](#-openospfd--area--interfaces)
+
+##### <a name="-openospfd--area--target"></a>`target`
 
 Data type: `String`
 
 the target to write the area into
 
-##### `area_name`
+##### <a name="-openospfd--area--area_name"></a>`area_name`
 
 Data type: `String`
 
@@ -396,7 +440,7 @@ the name of the area
 
 Default value: `$title`
 
-##### `config`
+##### <a name="-openospfd--area--config"></a>`config`
 
 Data type: `Hash`
 
@@ -404,7 +448,7 @@ area specific configuration
 
 Default value: `{}`
 
-##### `interfaces`
+##### <a name="-openospfd--area--interfaces"></a>`interfaces`
 
 Data type: `Hash`
 
@@ -413,7 +457,7 @@ for detailed interface options see openospfd::interface
 
 Default value: `{}`
 
-### `openospfd::interface`
+### <a name="openospfd--interface"></a>`openospfd::interface`
 
 adds an interface to an area.
 this define is used internaly from
@@ -422,21 +466,27 @@ from youre toplevel.
 
 #### Parameters
 
-The following parameters are available in the `openospfd::interface` defined type.
+The following parameters are available in the `openospfd::interface` defined type:
 
-##### `target`
+* [`target`](#-openospfd--interface--target)
+* [`area_name`](#-openospfd--interface--area_name)
+* [`interface_name`](#-openospfd--interface--interface_name)
+* [`config`](#-openospfd--interface--config)
+* [`passive`](#-openospfd--interface--passive)
+
+##### <a name="-openospfd--interface--target"></a>`target`
 
 Data type: `String`
 
 the target file
 
-##### `area_name`
+##### <a name="-openospfd--interface--area_name"></a>`area_name`
 
 Data type: `String`
 
 the name of the area to add the interface
 
-##### `interface_name`
+##### <a name="-openospfd--interface--interface_name"></a>`interface_name`
 
 Data type: `String`
 
@@ -444,7 +494,7 @@ the name of the interface to add
 
 Default value: `$title`
 
-##### `config`
+##### <a name="-openospfd--interface--config"></a>`config`
 
 Data type: `Hash`
 
@@ -452,11 +502,11 @@ the interface specific configuration
 
 Default value: `{}`
 
-##### `passive`
+##### <a name="-openospfd--interface--passive"></a>`passive`
 
 Data type: `Boolean`
 
 set to true for passive interface
 
-Default value: ``false``
+Default value: `false`
 
