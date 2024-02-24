@@ -16,12 +16,11 @@ define openospfd::area (
   Hash   $config     = {},
   Hash   $interfaces = {},
 ) {
-
-  concat::fragment{"ospfd: ${target} area ${area_name}":
+  concat::fragment { "ospfd: ${target} area ${area_name}":
     target  => $target,
     content => epp('openospfd/ospfd.conf-area.epp', {
-      area_name => $area_name,
-      config    => $config,
+        area_name => $area_name,
+        config    => $config,
     }),
     order   => "500-${area_name}-000-head",
   }
@@ -32,11 +31,10 @@ define openospfd::area (
   }
 
   pick_default($interfaces, $openospfd::interfaces).map |String $key, Hash $val| {
-    create_resources('openospfd::interface', { "${key}_${target}" => $val }, {'interface_name' => $key } + $interface_defaults)
+    create_resources('openospfd::interface', { "${key}_${target}" => $val }, { 'interface_name' => $key } + $interface_defaults)
   }
 
-
-  concat::fragment{"ospfd: ${target} area ${area_name} foot":
+  concat::fragment { "ospfd: ${target} area ${area_name} foot":
     target  => $target,
     content => '}',
     order   => "500-${area_name}-999-foot",

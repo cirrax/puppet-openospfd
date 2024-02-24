@@ -54,10 +54,9 @@ class openospfd::ospf6d (
   Optional[Hash]   $global_config  = undef,
   Optional[Array]  $redistribute   = [],
 ) {
-
   include openospfd
 
-  concat{ $config_file:
+  concat { $config_file:
     owner        => $openospfd::owner,
     group        => $openospfd::group,
     mode         => '0600',
@@ -65,14 +64,14 @@ class openospfd::ospf6d (
     notify       => Service[$service_name],
   }
 
-  concat::fragment{'ospf6d: global config':
+  concat::fragment { 'ospf6d: global config':
     target  => $config_file,
     content => epp('openospfd/ospfd.conf-header.epp', {
-      router_id     => pick_default($router_id, $openospfd::router_id),
-      rdomain       => pick_default($rdomain, $openospfd::rdomain),
-      macros        => pick_default($macros, $openospfd::macros),
-      global_config => pick_default($global_config, $openospfd::global_config),
-      redistribute  => $redistribute,
+        router_id     => pick_default($router_id, $openospfd::router_id),
+        rdomain       => pick_default($rdomain, $openospfd::rdomain),
+        macros        => pick_default($macros, $openospfd::macros),
+        global_config => pick_default($global_config, $openospfd::global_config),
+        redistribute  => $redistribute,
     }),
     order   => '000',
   }
@@ -80,25 +79,25 @@ class openospfd::ospf6d (
   $area_default = { target => $config_file }
 
   pick_default($areas, $openospfd::areas).map |String $key, Hash $val| {
-    create_resources('openospfd::area', {"6_${key}" => $val }, {'area_name' => $key } + $area_default )
+    create_resources('openospfd::area', { "6_${key}" => $val }, { 'area_name' => $key } + $area_default )
   }
 
   $_rtable = pick_default($rtable, $openospfd::rtable)
   if $_rtable and $openospfd::rcconffile {
-    file_line{ 'openospf6d ensure rtable':
+    file_line { 'openospf6d ensure rtable':
       path  => $openospfd::rcconffile,
       line  => "ospf6d_rtable=${_rtable}",
       match => '^ospf6d_rtable=',
     }
   } else {
-    file_line{ 'openospf6d ensure rtable':
+    file_line { 'openospf6d ensure rtable':
       ensure => 'absent',
       path   => $openospfd::rcconffile,
       match  => '^ospf6d_rtable=',
     }
   }
 
-  service{ $service_name :
+  service { $service_name :
     ensure => $service_ensure,
     enable => $service_enable,
   }

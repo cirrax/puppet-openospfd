@@ -23,14 +23,13 @@ define openospfd::interface (
   Hash    $config         = {},
   Boolean $passive        = false,
 ) {
-
-  concat::fragment{"ospfd: ${target} interface ${area_name}, ${interface_name}":
+  concat::fragment { "ospfd: ${target} interface ${area_name}, ${interface_name}":
     target  => $target,
     content => epp('openospfd/ospfd.conf-interface.epp', {
-      area_name      => $area_name,
-      interface_name => $interface_name,
-      passive        => $passive,
-      config         => $config,
+        area_name      => $area_name,
+        interface_name => $interface_name,
+        passive        => $passive,
+        config         => $config,
     }),
     order   => "500-${area_name}-500-${interface_name}",
   }

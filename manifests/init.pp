@@ -48,7 +48,6 @@ class openospfd (
   String           $rcconffile     = '/etc/rc.conf.local',
   Hash             $interfaces     = {},
 ) {
-
   if $include_ospfd {
     include openospfd::ospfd
   }
@@ -56,5 +55,4 @@ class openospfd (
   if $include_ospf6d {
     include openospfd::ospf6d
   }
-
 }
